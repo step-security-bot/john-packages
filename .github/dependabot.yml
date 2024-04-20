@@ -30,3 +30,8 @@ updates:
     directory: /.clusterfuzzlite
     schedule:
       interval: daily
+
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: daily
