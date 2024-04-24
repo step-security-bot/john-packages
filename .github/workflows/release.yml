@@ -30,38 +30,38 @@ name: Virus Scan
 permissions: read-all
 
 jobs:
-  virustotal:
-    name: Virus Scan
-    runs-on: ubuntu-latest
-    permissions:
-      # required to update the release. But it is a security issue.
-      contents: write
-      id-token: write
+  # virustotal:
+  #   name: Virus Scan
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     # required to update the release. But it is a security issue.
+  #     contents: write
+  #     id-token: write
 
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
-        with:
-          disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            objects.githubusercontent.com:443
-            www.virustotal.com:443
+  #   steps:
+  #     - name: Harden Runner
+  #       uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
+  #       with:
+  #         disable-sudo: true
+  #         egress-policy: block
+  #         allowed-endpoints: >
+  #           api.github.com:443
+  #           objects.githubusercontent.com:443
+  #           www.virustotal.com:443
 
-      - name: VirusTotal Scan
-        uses: crazy-max/ghaction-virustotal@92a6081d9aab8f8ef3d9081e8bb264aaccc9e74d # v4.0.0
+  #     - name: VirusTotal Scan
+  #       uses: crazy-max/ghaction-virustotal@92a6081d9aab8f8ef3d9081e8bb264aaccc9e74d # v4.0.0
 
-        with:
-          vt_api_key: ${{ secrets.VT_API_KEY }}
-          update_release_body: true
-          files: |
-            .7z$
-            .zip$
+  #       with:
+  #         vt_api_key: ${{ secrets.VT_API_KEY }}
+  #         update_release_body: true
+  #         files: |
+  #           .7z$
+  #           .zip$
 
   provenance:
     name: provenance
-    needs: [virustotal]
+#    needs: [virustotal]
     runs-on: ubuntu-latest
     permissions:
       # required to update the release. But it is a security issue.
