@@ -63,10 +63,10 @@ jobs:
     name: provenance
 #    needs: [virustotal]
     runs-on: ubuntu-latest
-    permissions:
-      # required to update the release. But it is a security issue.
-      contents: write
-      id-token: write
+#    permissions:
+#      # required to update the release. But it is a security issue.
+#      contents: write
+#      id-token: write
 
     steps:
       - name: Generate provenance for Release
